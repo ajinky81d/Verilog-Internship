@@ -1,0 +1,21 @@
+-- Half Adder using Behavioral Modeling
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity Half_Adder is
+    Port (
+        A : in  STD_LOGIC;   -- First input
+        B : in  STD_LOGIC;   -- Second input
+        SUM : out  STD_LOGIC; -- Sum output
+        CARRY : out  STD_LOGIC -- Carry output
+    );
+end Half_Adder;
+
+architecture Behavioral of Half_Adder is
+begin
+    process(A, B)
+    begin
+        SUM <= A XOR B;       -- Sum is XOR of inputs
+        CARRY <= A AND B;     -- Carry is AND of inputs
+    end process;
+end Behavioral;

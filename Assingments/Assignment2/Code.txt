@@ -1,0 +1,58 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date:    15:34:29 10/15/2025 
+// Design Name: 
+// Module Name:    Code 
+// Project Name: 
+// Target Devices: 
+// Tool versions: 
+// Description: 
+//
+// Dependencies: 
+//
+// Revision: 
+// Revision 0.01 - File Created
+// Additional Comments: 
+//
+//////////////////////////////////////////////////////////////////////////////////
+module Code(
+    input A,
+    input B,
+    input C,
+    input D,
+    input E,
+    input F,
+    output Y
+    );
+
+// wire definations
+
+	wire	P,Q,R,S,T;	
+ 
+// A and B
+
+    assign P = A & B;
+// C and D 
+	assign Q = C & D;
+	
+// E not
+   
+	assign R= ~E;
+// R and F
+	assign S= R & F;
+	
+// P or Q
+
+   assign T= P | Q;
+	
+// S or T
+	assign Y= S | T;
+	
+ 
+ 
+ 
+
+endmodule

@@ -1,0 +1,87 @@
+`timescale 1ns / 1ps
+
+////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer:
+//
+// Create Date:   15:57:53 10/16/2025
+// Design Name:   Code
+// Module Name:   /home/ise/Documents/Verilog Code/Assignment3/CodeTB.v
+// Project Name:  Assignment3
+// Target Device:  
+// Tool versions:  
+// Description: 
+//
+// Verilog Test Fixture created by ISE for module: Code
+//
+// Dependencies:
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+////////////////////////////////////////////////////////////////////////////////
+
+module CodeTB;
+
+	// Inputs
+	reg A0;
+	reg B0;
+	reg Cin;
+	reg A1;
+	reg B1;
+	reg A2;
+	reg B2;
+	reg A3;
+	reg B3;
+
+	// Outputs
+	wire S0;
+	wire S1;
+	wire S2;
+	wire S3;
+	wire Cout;
+
+	// Instantiate the Unit Under Test (UUT)
+	Code uut (
+		.A0(A0), 
+		.B0(B0), 
+		.Cin(Cin), 
+		.A1(A1), 
+		.B1(B1), 
+		.A2(A2), 
+		.B2(B2), 
+		.A3(A3), 
+		.B3(B3), 
+		.S0(S0), 
+		.S1(S1), 
+		.S2(S2), 
+		.S3(S3), 
+		.Cout(Cout)
+	);
+
+	initial begin
+	
+	$display("Test bench for full bit adder.");
+	
+	
+    // Display header
+    $display("A3A2A1A0  B3B2B1B0  Cin  |  S3S2S1S0  Cout");
+    $monitor("%b%b%b%b   %b%b%b%b   %b    |   %b%b%b%b    %b",
+             A3, A2, A1, A0, B3, B2, B1, B0, Cin, S3, S2, S1, S0, Cout);
+
+    // Test cases
+    Cin = 0; {A3,A2,A1,A0} = 4'b0000; {B3,B2,B1,B0} = 4'b0000; #10;
+    Cin = 0; {A3,A2,A1,A0} = 4'b0101; {B3,B2,B1,B0} = 4'b0011; #10;
+    Cin = 1; {A3,A2,A1,A0} = 4'b0110; {B3,B2,B1,B0} = 4'b0111; #10;
+    Cin = 0; {A3,A2,A1,A0} = 4'b1111; {B3,B2,B1,B0} = 4'b0001; #10;
+    Cin = 1; {A3,A2,A1,A0} = 4'b1111; {B3,B2,B1,B0} = 4'b1111; #10;
+
+    $finish;
+   
+	
+	
+	end
+      
+endmodule
+

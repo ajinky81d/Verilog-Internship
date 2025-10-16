@@ -1,0 +1,65 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date:    15:20:24 10/16/2025 
+// Design Name: 
+// Module Name:    Code 
+// Project Name: 
+// Target Devices: 
+// Tool versions: 
+// Description: 
+//
+// Dependencies: 
+//
+// Revision: 
+// Revision 0.01 - File Created
+// Additional Comments: 
+//
+//////////////////////////////////////////////////////////////////////////////////
+module Code(
+    input A0,
+    input B0,
+    input Cin,
+    input A1,
+    input B1,
+    input A2,
+    input B2,
+    input A3,
+    input B3,
+    output S0,
+    output S1,
+	 output S2,
+    output S3,
+    output Cout
+    );
+
+//Intermediate Definations
+
+	wire C1,C2,C3;
+	
+//1st full adder 
+//S=A⊕B⊕Cin​
+//Cout​=(A⋅B)+(Cin​⋅(A⊕B))
+           
+	assign S0 = A0 ^ B0 ^ Cin;  
+	assign C1 = (A0 & B0) | (Cin & (A0 ^ B0));
+
+//2nd full adder.
+
+	assign S1 = A1 ^ B1 ^ C1;  
+	assign C2 = (A1 & B1) | (C1 & (A1 ^ B1));
+
+//3rd full adder.
+
+	assign S2 = A2 ^ B2 ^ C2;  
+	assign C3 = (A2 & B2) | (C2 & (A2 ^ B2));
+	
+//4th full adder.
+
+	assign S3 = A3 ^ B3 ^ C3;  
+	assign Cout = (A3 & B3) | (C3 & (A3 ^ B3));
+	
+//end
+endmodule

@@ -1,0 +1,51 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date:    16:55:43 10/17/2025 
+// Design Name: 
+// Module Name:    Code 
+// Project Name: 
+// Target Devices: 
+// Tool versions: 
+// Description: 
+//
+// Dependencies: 
+//
+// Revision: 
+// Revision 0.01 - File Created
+// Additional Comments: 
+//
+//////////////////////////////////////////////////////////////////////////////////
+module Code(
+    input D0,
+    input D1,
+    input D2,
+    input D3,
+    input D4,
+    input D5,
+    input D6,
+    input D7,
+    input S0,
+    input S1,
+    input S2,
+    output Y
+    );
+
+//We want to find the equation for Y
+// then use here to find the Y.
+
+
+
+  assign Y = (D0 & ~S2 & ~S1 & ~S0) |
+               (D1 & ~S2 & ~S1 &  S0) |
+               (D2 & ~S2 &  S1 & ~S0) |
+               (D3 & ~S2 &  S1 &  S0) |
+               (D4 &  S2 & ~S1 & ~S0) |
+               (D5 &  S2 & ~S1 &  S0) |
+               (D6 &  S2 &  S1 & ~S0) |
+               (D7 &  S2 &  S1 &  S0);
+
+
+endmodule

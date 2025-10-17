@@ -1,0 +1,81 @@
+`timescale 1ns / 1ps
+
+////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer:
+//
+// Create Date:   17:44:22 10/17/2025
+// Design Name:   Code
+// Module Name:   /home/ise/Documents/Verilog Code/Assignment4_1/CodeTB.v
+// Project Name:  Assignment4_1
+// Target Device:  
+// Tool versions:  
+// Description:   Testbench for 8x1 MUX
+//
+// Dependencies:  Code.v
+//
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+//
+////////////////////////////////////////////////////////////////////////////////
+
+module CodeTB;
+
+	// Inputs
+	reg D0;
+	reg D1;
+	reg D2;
+	reg D3;
+	reg D4;
+	reg D5;
+	reg D6;
+	reg D7;
+	reg S0;
+	reg S1;
+	reg S2;
+
+	// Outputs
+	wire Y;
+
+	// Instantiate the Unit Under Test (UUT)
+	Code uut (
+		.D0(D0), 
+		.D1(D1), 
+		.D2(D2), 
+		.D3(D3), 
+		.D4(D4), 
+		.D5(D5), 
+		.D6(D6), 
+		.D7(D7), 
+		.S0(S0), 
+		.S1(S1), 
+		.S2(S2), 
+		.Y(Y)
+	);
+
+	initial begin
+		// Initialize Inputs
+		D0=0; D1=0; D2=0; D3=0; D4=0; D5=0; D6=0; D7=0;
+		S0=0; S1=0; S2=0;
+
+		// Wait 100 ns for global reset to finish
+		#100;
+		
+		// Set all data inputs to different known values
+		D0=1; D1=0; D2=1; D3=0; D4=1; D5=0; D6=1; D7=0;
+
+		$display("Time\tS2 S1 S0\tY");
+		$display("-------------------------");
+
+		// Loop through all select combinations
+		repeat(8) begin
+			#10;
+			$display("%0dns\t%b %b %b\t\t%b", $time, S2, S1, S0, Y);
+			{S2, S1, S0} = {S2, S1, S0} + 1;
+		end
+
+		#10 $stop;
+	end
+
+endmodule
